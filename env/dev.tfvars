@@ -35,3 +35,45 @@ subnets_config = [{
         Env = "dev"
     }
 }]
+web_nsg_info = {
+  name = "web"
+  rules = [{
+    name                       = "openssh"
+    priority                   = 300
+    description                = "open ssh"
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+    }, {
+    name                       = "openhttp"
+    priority                   = 350
+    description                = "open http"
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "80"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+    }, {
+    name                       = "openhttps"
+    priority                   = 400
+    description                = "open https"
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }]
+}
+public_ip_info = {
+  name              = "webip"
+  allocation_method = "Static"
+  sku               = "Standard"
+}
